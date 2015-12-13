@@ -1,50 +1,37 @@
 package college.edu.tomer.recyclerviewdemo;
 
+
 /**
- * Copy as will
+ * immutable class AndroidVersion
  */
 public class AndroidVersion {
 
-    //Private members:
-    private String versionNumber;
-    private String versionName;
-    private String imageUrl;
-    private String versionDescription;
 
-    //Constructors:
-    public AndroidVersion(String versionNumber, String versionName, String imageUrl, String versionDescription) {
-        this.versionNumber = versionNumber;
-        this.versionName = versionName;
-        this.imageUrl = imageUrl;
-        this.versionDescription = versionDescription;
-    }
+    final String description;
+    final String imageName;
+    final Float version;
+    final String name;
+    final String category;
 
 
-    //Public API:
+
     @Override
     public String toString() {
         return "AndroidVersion{" +
-                "versionNumber='" + versionNumber + '\'' +
-                ", versionName='" + versionName + '\'' +
-                ", imageUrl='" + imageUrl + '\'' +
-                ", versionDescription='" + versionDescription + '\'' +
+                "description='" + description + '\'' +
+                ", imageName='" + imageName + '\'' +
+                ", version=" + version +
+                ", name='" + name + '\'' +
+                ", category='" + category + '\'' +
                 '}';
     }
 
-    // Public API: Getters:
-    public String getVersionNumber() {
-        return versionNumber;
-    }
-
-    public String getVersionName() {
-        return versionName;
-    }
-
-    public String getImageUrl() {
-        return imageUrl;
-    }
-
-    public String getVersionDescription() {
-        return versionDescription;
+    public AndroidVersion(String category, String name, float version,
+                          String imageName, String description) {
+        this.category = category;
+        this.name = name;
+        this.version = version;
+        this.imageName = imageName;
+        this.description = description;
     }
 }

@@ -11,17 +11,18 @@ import android.widget.TextView;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class AndroidVersionAdapter
         extends RecyclerView.Adapter<AndroidVersionAdapter.AndroidVersionViewHolder> {
 
     //Private data members
-    private ArrayList<AndroidVersion> data;
+    private List<AndroidVersion> data;
     private Context context;
 
     //Constructor:
-    public AndroidVersionAdapter(ArrayList<AndroidVersion> data, Context context) {
+    public AndroidVersionAdapter(List<AndroidVersion> data, Context context) {
         this.data = data;
         this.context = context;
     }
@@ -36,11 +37,12 @@ public class AndroidVersionAdapter
     @Override
     public void onBindViewHolder(AndroidVersionViewHolder holder, int position) {
         AndroidVersion currentItem = data.get(position);
-        holder.tvVersionNumber.setText(currentItem.getVersionNumber());
-        Picasso.with(context).load(currentItem.getImageUrl())
-                .error(R.drawable.ic_error)
-                .placeholder(R.drawable.ic_progress)
-                .into(holder.ivAndroidVersion);
+
+        holder.tvVersionNumber.setText(currentItem.version.toString());
+        int id = context.getResources().getIdentifier(currentItem.imageName, "drawable", context.getPackageName());
+        Picasso.with(context).load(id).error(R.drawable.ic_error)
+                .placeholder(R.drawable.ic_progress).
+                into(holder.ivAndroidVersion);
     }
 
     @Override
